@@ -1,6 +1,6 @@
 """
-Authors: Matthew O'Malley-Nichols, TODO
-Description: TODO
+Authors: Matthew O'Malley-Nichols, Pedram Jarahzedah, Devin Fahnestock
+Description: Unit tests for our 362 group project.
 """
 import unittest
 
