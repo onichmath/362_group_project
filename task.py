@@ -16,6 +16,6 @@ def my_datetime(num_sec):
 
 
 def conv_endian(num, endian='big'):
-    """Takes in an int as num and converts it to a hexadecimal num. 
+    """Takes in an int as num and converts it to a hexadecimal num.
     The endian type is determined by the flag endian. Returns a string."""
     pass
