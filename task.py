@@ -10,10 +10,12 @@ def conv_num(num_str):
 
 
 def my_datetime(num_sec):
-    """Takes in an int representing the num of secs since the epoch, and returns it as a string formatted as MM-DD-YYYY"""
+    """Takes in an int representing the num of secs since the epoch,
+      and returns it as a string formatted as MM-DD-YYYY"""
     pass
 
 
 def conv_endian(num, endian='big'):
-    """Takes in an int as num and converts it to a hexadecimal num. The endian type is determined by the flag endian. Returns a string."""
+    """Takes in an int as num and converts it to a hexadecimal num. 
+    The endian type is determined by the flag endian. Returns a string."""
     pass
