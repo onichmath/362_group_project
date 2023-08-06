@@ -40,17 +40,26 @@ def convert_to_hex(num):
 def create_hex_array(num):
     hex = []
     if num == 0:
-        hex.append(convert_to_hex(num % 16))
+        hex.append(convert_to_hex(0))
+        hex.append(convert_to_hex(0))
     while num > 0:
         hex.append(convert_to_hex(num % 16))
         num //= 16
+    if len(hex) % 2 != 0:
+        hex.append(convert_to_hex(0))
     return hex
 
 
 def conv_endian(num, endian='big'):
     """Takes in an int as num and converts it to a hexadecimal num.
     The endian type is determined by the flag endian. Returns a string."""
-
+    hex = create_hex_array(num)
+    hexstr = ""
+    spacer = 0
     while len(hex) > 0:
-        num = hex.pop()
-    return hex
+        if spacer % 2 == 0 and spacer > 0:
+            hexstr += " "
+        hexval = hex.pop()
+        hexstr += hexval
+        spacer += 1
+    return hexstr
