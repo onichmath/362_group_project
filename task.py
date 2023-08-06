@@ -57,18 +57,24 @@ def conv_endian(num, endian='big'):
     if num < 0:
         num = abs(num)
         hexstr += "-"
-    end = -1
-    if endian == 'little':
-        end = 0
-    elif endian != 'big':
-        return None
     hex = create_hex_array(num)
+    if endian == 'little':
+        spacer = False
+        while len(hex) > 0:
+            if spacer:
+                hexstr += " "
+            hexstr += hex.pop(1)
+            hexstr += hex.pop(0)
+            spacer = True
+    elif endian == 'big':
+        spacer = False
+        while len(hex) > 0:
+            if spacer:
+                hexstr += " "
+            hexstr += hex.pop()
+            hexstr += hex.pop()
+            spacer = True
+    else:
+        return None
 
-    spacer = 0
-    while len(hex) > 0:
-        if spacer % 2 == 0 and spacer > 0:
-            hexstr += " "
-        hexval = hex.pop(end)
-        hexstr += hexval
-        spacer += 1
     return hexstr
