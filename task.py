@@ -37,7 +37,20 @@ def convert_to_hex(num):
     return hexmap[num]
 
 
+def create_hex_array(num):
+    hex = []
+    if num == 0:
+        hex.append(convert_to_hex(num % 16))
+    while num > 0:
+        hex.append(convert_to_hex(num % 16))
+        num //= 16
+    return hex
+
+
 def conv_endian(num, endian='big'):
     """Takes in an int as num and converts it to a hexadecimal num.
     The endian type is determined by the flag endian. Returns a string."""
-    pass
+
+    while len(hex) > 0:
+        num = hex.pop()
+    return hex
