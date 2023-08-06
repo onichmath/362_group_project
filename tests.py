@@ -49,6 +49,12 @@ class TestCase(unittest.TestCase):
     def test_endian_6(self):
         self.assertEqual('0A F1', conv_endian(2801, 'big'))
 
+    def test_endian_7(self):
+        self.assertEqual('-0A F1', conv_endian(-2801, 'big'))
+
+    def test_endian_8(self):
+        self.assertEqual('-1F A0', conv_endian(-2801, 'little'))
+
 
 if __name__ == "__main__":
     unittest.main()
