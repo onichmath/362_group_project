@@ -53,13 +53,17 @@ def create_hex_array(num):
 def conv_endian(num, endian='big'):
     """Takes in an int as num and converts it to a hexadecimal num.
     The endian type is determined by the flag endian. Returns a string."""
+    hexstr = ""
+    if num < 0:
+        num = abs(num)
+        hexstr += "-"
     end = -1
     if endian == 'little':
         end = 0
     elif endian != 'big':
         return None
     hex = create_hex_array(num)
-    hexstr = ""
+
     spacer = 0
     while len(hex) > 0:
         if spacer % 2 == 0 and spacer > 0:
