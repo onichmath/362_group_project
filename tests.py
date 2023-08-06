@@ -43,10 +43,10 @@ class TestCase(unittest.TestCase):
     def test_endian_4(self):
         self.assertEqual('1F A0', conv_endian(2801, 'little'))
 
-    def test_endian_4(self):
+    def test_endian_5(self):
         self.assertEqual(None, conv_endian(2801, 'small'))
 
-    def test_endian_2(self):
+    def test_endian_6(self):
         self.assertEqual('0A F1', conv_endian(2801, 'big'))
 
 
