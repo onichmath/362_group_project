@@ -26,10 +26,16 @@ class TestCase(unittest.TestCase):
         self.assertEqual(['F', '1'], create_hex_array(31))
 
     def test_hexarr_2(self):
-        self.assertEqual(['1', 'F', 'A'], create_hex_array(2801))
+        self.assertEqual(['1', 'F', 'A', '0'], create_hex_array(2801))
 
     def test_hexarr_3(self):
-        self.assertEqual(['0'], create_hex_array(0))
+        self.assertEqual(['0', '0'], create_hex_array(0))
+
+    def test_endian_1(self):
+        self.assertEqual('1F', conv_endian(31))
+
+    def test_endian_1(self):
+        self.assertEqual('0A F1', conv_endian(2801))
 
 
 if __name__ == "__main__":
