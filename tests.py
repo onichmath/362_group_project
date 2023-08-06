@@ -41,7 +41,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual('F1', conv_endian(31, 'little'))
 
     def test_endian_4(self):
-        self.assertEqual('1F A0', conv_endian(2801, 'little'))
+        self.assertEqual('F1 0A', conv_endian(2801, 'little'))
 
     def test_endian_5(self):
         self.assertEqual(None, conv_endian(2801, 'small'))
@@ -53,7 +53,30 @@ class TestCase(unittest.TestCase):
         self.assertEqual('-0A F1', conv_endian(-2801, 'big'))
 
     def test_endian_8(self):
-        self.assertEqual('-1F A0', conv_endian(-2801, 'little'))
+        self.assertEqual('-F1 0A', conv_endian(-2801, 'little'))
+
+    # Example Tests From Module
+    def test_endian_module_1(self):
+        self.assertEqual(conv_endian(954786, 'big'), '0E 91 A2')
+
+    def test_endian_module_2(self):
+        self.assertEqual(conv_endian(954786), '0E 91 A2')
+
+    def test_endian_module_3(self):
+        self.assertEqual(conv_endian(-954786), '-0E 91 A2')
+
+    def test_endian_module_4(self):
+        self.assertEqual(conv_endian(954786, 'little'), 'A2 91 0E')
+
+    def test_endian_module_5(self):
+        self.assertEqual(conv_endian(-954786, 'little'), '-A2 91 0E')
+
+    def test_endian_module_6(self):
+        self.assertEqual(conv_endian(
+            num=-954786, endian='little'), '-A2 91 0E')
+
+    def test_endian_module_7(self):
+        self.assertEqual(conv_endian(num=-954786, endian='small'), None)
 
 
 if __name__ == "__main__":
