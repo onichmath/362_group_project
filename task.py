@@ -20,15 +20,36 @@ def str_to_num(num_str):
             }
     return map[num_str]
 
-
-def conv_num(num_str):
-    """Takes in a str representing a num, converts it to base 10, and returns it."""
+def conv_int(int_str):
+    """Converts a string representing an int to an int"""
     result = 0
     power = 0
-    for num in num_str[::-1]:
+    for num in int_str[::-1]:
         result += str_to_num(num) * (10 ** power)
         power += 1
     return result
+
+def conv_float(left_num_str, right_num_str):
+    """Converts a num representing a float to a float"""
+    result = 0
+    left_power = 0
+    right_power = -1
+    for num in left_num_str[::-1]:
+        result += str_to_num(num) * (10 ** left_power)
+        left_power += 1
+    for num in right_num_str:
+        result += str_to_num(num) * (10 ** right_power)
+        right_power -= 1
+    return result
+
+def conv_num(num_str):
+    """Takes in a str representing a num, converts it to base 10, and returns it."""
+    for i in range(len(num_str)):
+        if num_str[i] == ".":
+            left_num_str = num_str[0:i]
+            right_num_str = num_str[i+1::]
+            return conv_float(left_num_str, right_num_str)
+    return conv_int(num_str)
 
 def my_datetime(num_sec):
     """Takes in an int representing the num of secs since the epoch,
