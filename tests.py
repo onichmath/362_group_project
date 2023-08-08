@@ -31,6 +31,27 @@ class TestCase(unittest.TestCase):
     def test_conv_float_p45(self):
         self.assertEqual(float(0.45), conv_num(".45"))
 
+    def test_conv_int_n123p45(self):
+        self.assertEqual(float(-123.45), conv_num("-123.45"))
+
+    def test_conv_empty(self):
+        self.assertEqual(None, conv_num(""))
+
+    def test_conv_float_1(self):
+        self.assertEqual(None, conv_num("-"))
+
+    def test_conv_float_n1p1(self):
+        self.assertEqual(float(-1.1), conv_num("-1.1"))
+
+    def test_double_dot(self):
+        self.assertEqual(None, conv_num("123.45.67"))
+
+    def test_single_p(self):
+        self.assertEqual(float(0), conv_num("."))
+
+    def test_hex_FF(self):
+        self.assertEqual(int(255), conv_num("0xFF"))
+
 
 
     # Testing For conv_endian
