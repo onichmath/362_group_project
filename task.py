@@ -4,9 +4,31 @@ Description: Tasks for our group project
 """
 
 
+def str_to_num(num_str):
+    """Takes a str representing a num and converts it to an number"""
+    map = {
+            "0": 0,
+            "1": 1,
+            "2": 2,
+            "3": 3,
+            "4": 4,
+            "5": 5,
+            "6": 6,
+            "7": 7,
+            "8": 8,
+            "9": 9
+            }
+    return map[num_str]
+
+
 def conv_num(num_str):
     """Takes in a str representing a num, converts it to base 10, and returns it."""
-    pass
+    result = 0
+    power = 0
+    for num in num_str[::-1]:
+        result += str_to_num(num) * (10 ** power)
+        power += 1
+    return result
 
 def my_datetime(num_sec):
     """Takes in an int representing the num of secs since the epoch,
