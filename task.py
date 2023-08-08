@@ -61,6 +61,8 @@ def conv_hex(hex_str):
 
 def conv_num(num_str_param):
     """Takes in a str representing a num, converts it to base 10, and returns it."""
+    if type(num_str_param) is not str:
+        return None
     parity = 1
     num_str = str(num_str_param)
     if num_str.count("-") > 0:
