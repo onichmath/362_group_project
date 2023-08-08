@@ -76,6 +76,12 @@ class TestCase(unittest.TestCase):
     def test_hex_wrongalpha(self):
         self.assertEqual(None, conv_num("0xFz23"))
 
+    def test_int_wrong_alpha(self):
+        self.assertEqual(None, conv_num("213zo34"))
+
+    def test_float_wrong_alpha(self):
+        self.assertEqual(None, conv_num("123.45oz4"))
+
 
 
     # Testing For conv_endian
