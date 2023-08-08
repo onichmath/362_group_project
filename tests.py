@@ -55,6 +55,18 @@ class TestCase(unittest.TestCase):
     def test_wrong_type_1(self):
         self.assertEqual(None, conv_num(1234))
 
+    def test_wrong_type_2(self):
+        self.assertEqual(None, conv_num(False))
+
+    def test_hex_F22B4C(self):
+        self.assertEqual(int(15870796), conv_num("0xF22B4C"))
+
+    def test_hex_nFF(self):
+        self.assertEqual(int(-255), conv_num("-0xFF"))
+
+    def test_hex_decimal(self):
+        self.assertEqual(None, conv_num("0xFF.23"))
+
 
 
     # Testing For conv_endian
