@@ -52,6 +52,9 @@ class TestCase(unittest.TestCase):
     def test_hex_FF(self):
         self.assertEqual(int(255), conv_num("0xFF"))
 
+    def test_wrong_type_1(self):
+        self.assertEqual(None, conv_num(1234))
+
 
 
     # Testing For conv_endian
