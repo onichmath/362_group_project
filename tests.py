@@ -73,14 +73,29 @@ class TestCase(unittest.TestCase):
     def test_hex_lowercase(self):
         self.assertEqual(int(255), conv_num("0xff"))
 
-    def test_hex_wrongalpha(self):
+    def test_hex_wrongalpha_1(self):
         self.assertEqual(None, conv_num("0xFz23"))
 
-    def test_int_wrong_alpha(self):
+    def test_int_wrong_alpha_1(self):
         self.assertEqual(None, conv_num("213zo34"))
 
-    def test_float_wrong_alpha(self):
+    def test_float_wrong_alpha_1(self):
         self.assertEqual(None, conv_num("123.45oz4"))
+
+    def test_float_wrong_alpha_2(self):
+        self.assertEqual(None, conv_num("123o4.34"))
+
+    def test_int_wrong_alpha_2(self):
+        self.assertEqual(None, conv_num("1230x"))
+
+    def test_hex_prefix_1(self):
+        self.assertEqual(None, conv_num("21040x4312"))
+
+    def test_hex_prefix_2(self):
+        self.assertEqual(None, conv_num("0xFD0x32df"))
+
+    def test_hex_prefix_3(self):
+        self.assertEqual(None, conv_num("-0xFD0x32df"))
 
 
 
