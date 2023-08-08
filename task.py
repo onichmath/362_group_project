@@ -42,12 +42,21 @@ def conv_float(left_num_str, right_num_str):
         right_power -= 1
     return result
 
-def conv_num(num_str):
+def conv_num(num_str_param:str):
     """Takes in a str representing a num, converts it to base 10, and returns it."""
+    parity = 1
+    num_str = str(num_str_param)
+    if num_str.count("-") > 0:
+        if num_str[0] == "-":
+            parity = -1
+            num_str = num_str[1::]
+        else:
+            return None
     if num_str.count(".") == 1:
         split_num_str = num_str.split('.') 
-        return conv_float(split_num_str[0], split_num_str[1])
-    return conv_int(num_str)
+        return parity * conv_float(split_num_str[0], split_num_str[1])
+    if num_str.isdecimal():
+        return parity * conv_int(num_str)
     return None
 
 def my_datetime(num_sec):
