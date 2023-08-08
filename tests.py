@@ -70,6 +70,9 @@ class TestCase(unittest.TestCase):
     def test_double_hyphen(self):
         self.assertEqual(None, conv_num("-213-213"))
 
+    def test_hex_lowercase(self):
+        self.assertEqual(int(255), conv_num("0xff"))
+
 
 
     # Testing For conv_endian

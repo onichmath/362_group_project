@@ -18,12 +18,12 @@ def str_to_num(num_str):
             "7": 7,
             "8": 8,
             "9": 9,
-            "A": 10,
-            "B": 11,
-            "C": 12,
-            "D": 13,
-            "E": 14,
-            "F": 15
+            "a": 10,
+            "b": 11,
+            "c": 12,
+            "d": 13,
+            "e": 14,
+            "f": 15,
             }
     return map[num_str]
 
@@ -51,7 +51,6 @@ def conv_float(left_num_str, right_num_str, sign):
 
 def conv_hex(hex_str, sign):
     """Converts a str representing a hex to an int"""
-    print(hex_str)
     result = 0
     power = 0
     for num in hex_str[::-1]:
