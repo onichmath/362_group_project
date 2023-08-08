@@ -3,13 +3,19 @@ Authors: Matthew O'Malley-Nichols, Pedram Jarahzedah, Devin Fahnestock
 Description: Unit tests for our 362 group project.
 """
 import unittest
-from task import conv_endian, convert_to_hex, create_hex_array
+from task import conv_endian, convert_to_hex, create_hex_array, conv_num
 
 
 class TestCase(unittest.TestCase):
 
     def test1(self):
         self.assertTrue(True)
+
+    # Testing for conv_num
+
+    def test_conv_int_123(self):
+        self.assertEqual(123, conv_num("123"))
+
 
     # Testing For conv_endian
 
