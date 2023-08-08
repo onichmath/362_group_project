@@ -25,7 +25,9 @@ def str_to_num(num_str):
             "e": 14,
             "f": 15,
             }
-    return map[num_str]
+    if num_str in map.keys():
+        return map[num_str]
+    return None
 
 def conv_int(int_str, sign):
     """Converts a string representing an int to an int"""
@@ -54,8 +56,6 @@ def conv_hex(hex_str, sign):
     result = 0
     power = 0
     for num in hex_str[::-1]:
-        if num == ".":
-            return None
         result += str_to_num(num) * (16 ** power)
         power += 1
     return sign * result

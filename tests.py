@@ -73,6 +73,9 @@ class TestCase(unittest.TestCase):
     def test_hex_lowercase(self):
         self.assertEqual(int(255), conv_num("0xff"))
 
+    def test_hex_wrongalpha(self):
+        self.assertEqual(None, conv_num("0xFz23"))
+
 
 
     # Testing For conv_endian
