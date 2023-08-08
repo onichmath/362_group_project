@@ -26,16 +26,16 @@ def str_to_num(num_str):
             }
     return map[num_str]
 
-def conv_int(int_str):
+def conv_int(int_str, parity):
     """Converts a string representing an int to an int"""
     result = 0
     power = 0
     for num in int_str[::-1]:
         result += str_to_num(num) * (10 ** power)
         power += 1
-    return result
+    return parity * result
 
-def conv_float(left_num_str, right_num_str):
+def conv_float(left_num_str, right_num_str, parity):
     """Converts a str representing a float to a float"""
     result = 0
     left_power = 0
@@ -46,17 +46,19 @@ def conv_float(left_num_str, right_num_str):
     for num in right_num_str:
         result += str_to_num(num) * (10 ** right_power)
         right_power -= 1
-    return result
+    return parity * result
 
-def conv_hex(hex_str):
+def conv_hex(hex_str, parity):
     """Converts a str representing a hex to an int"""
     print(hex_str)
     result = 0
     power = 0
     for num in hex_str[::-1]:
+        if num == ".":
+            return None
         result += str_to_num(num) * (16 ** power)
         power += 1
-    return result
+    return parity * result
 
 
 def conv_num(num_str_param):
@@ -74,12 +76,12 @@ def conv_num(num_str_param):
     if num_str.count("0x") > 0:
         if num_str[:2] == "0x":
             num_str = num_str[2::]
-            return parity * conv_hex(num_str)
+            return conv_hex(num_str, parity)
     if num_str.count(".") == 1:
         split_num_str = num_str.split('.') 
-        return parity * conv_float(split_num_str[0], split_num_str[1])
+        return conv_float(split_num_str[0], split_num_str[1], parity)
     if num_str.isdecimal():
-        return parity * conv_int(num_str)
+        return conv_int(num_str, parity)
     return None
 
 def my_datetime(num_sec):
