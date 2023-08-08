@@ -97,8 +97,6 @@ class TestCase(unittest.TestCase):
     def test_hex_prefix_3(self):
         self.assertEqual(None, conv_num("-0xFD0x32df"))
 
-
-
     # Testing For conv_endian
 
     def test_hex_ten(self):
