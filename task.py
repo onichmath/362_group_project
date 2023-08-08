@@ -56,8 +56,11 @@ def conv_hex(hex_str, sign):
     result = 0
     power = 0
     for num in hex_str[::-1]:
-        result += str_to_num(num) * (16 ** power)
-        power += 1
+        if str_to_num(num):
+            result += str_to_num(num) * (16 ** power)
+            power += 1
+            continue
+        return None
     return sign * result
 
 def conv_num_failure(num_str):
