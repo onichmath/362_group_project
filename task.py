@@ -44,9 +44,13 @@ def conv_float(left_num_str, right_num_str, sign):
     left_power = 0
     right_power = -1
     for num in left_num_str[::-1]:
+        if not num.isdecimal():
+            return None
         result += str_to_num(num) * (10 ** left_power)
         left_power += 1
     for num in right_num_str:
+        if not num.isdecimal():
+            return None
         result += str_to_num(num) * (10 ** right_power)
         right_power -= 1
     return sign * result
