@@ -60,14 +60,23 @@ def conv_hex(hex_str, parity):
         power += 1
     return parity * result
 
+def conv_num_failure(num_str):
+    """Failure conditions for conv_num"""
+    if type(num_str) is not str:
+        return True
+    if num_str.count(".") > 1:
+        return True
+    if num_str.count("-") > 1:
+        return True
+
 
 def conv_num(num_str_param):
     """Takes in a str representing a num, converts it to base 10, and returns it."""
-    if type(num_str_param) is not str:
+    if conv_num_failure(num_str_param):
         return None
     parity = 1
     num_str = str(num_str_param)
-    if num_str.count("-") > 0:
+    if num_str.count("-") == 1:
         if num_str[0] == "-":
             parity = -1
             num_str = num_str[1::]
