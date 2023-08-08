@@ -44,12 +44,11 @@ def conv_float(left_num_str, right_num_str):
 
 def conv_num(num_str):
     """Takes in a str representing a num, converts it to base 10, and returns it."""
-    for i in range(len(num_str)):
-        if num_str[i] == ".":
-            left_num_str = num_str[0:i]
-            right_num_str = num_str[i+1::]
-            return conv_float(left_num_str, right_num_str)
+    if num_str.count(".") == 1:
+        split_num_str = num_str.split('.') 
+        return conv_float(split_num_str[0], split_num_str[1])
     return conv_int(num_str)
+    return None
 
 def my_datetime(num_sec):
     """Takes in an int representing the num of secs since the epoch,

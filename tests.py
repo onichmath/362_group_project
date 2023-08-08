@@ -14,13 +14,13 @@ class TestCase(unittest.TestCase):
     # Testing for conv_num
 
     def test_conv_int_123(self):
-        self.assertEqual(123, conv_num("123"))
+        self.assertEqual(int(123), conv_num("123"))
 
     def test_conv_int_0(self):
-        self.assertEqual(0, conv_num("0"))
+        self.assertEqual(int(0), conv_num("0"))
 
     def test_conv_float_123p45(self):
-        self.assertEqual(123.45, conv_num("123.45"))
+        self.assertEqual(float(123.45), conv_num("123.45"))
 
     # Testing For conv_endian
 
