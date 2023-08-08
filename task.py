@@ -16,7 +16,13 @@ def str_to_num(num_str):
             "6": 6,
             "7": 7,
             "8": 8,
-            "9": 9
+            "9": 9,
+            "A": 10,
+            "B": 11,
+            "C": 12,
+            "D": 13,
+            "E": 14,
+            "F": 15
             }
     return map[num_str]
 
@@ -30,7 +36,7 @@ def conv_int(int_str):
     return result
 
 def conv_float(left_num_str, right_num_str):
-    """Converts a num representing a float to a float"""
+    """Converts a str representing a float to a float"""
     result = 0
     left_power = 0
     right_power = -1
@@ -42,7 +48,18 @@ def conv_float(left_num_str, right_num_str):
         right_power -= 1
     return result
 
-def conv_num(num_str_param:str):
+def conv_hex(hex_str):
+    """Converts a str representing a hex to an int"""
+    print(hex_str)
+    result = 0
+    power = 0
+    for num in hex_str[::-1]:
+        result += str_to_num(num) * (16 ** power)
+        power += 1
+    return result
+
+
+def conv_num(num_str_param):
     """Takes in a str representing a num, converts it to base 10, and returns it."""
     parity = 1
     num_str = str(num_str_param)
@@ -52,6 +69,10 @@ def conv_num(num_str_param:str):
             num_str = num_str[1::]
         else:
             return None
+    if num_str.count("0x") > 0:
+        if num_str[:2] == "0x":
+            num_str = num_str[2::]
+            return parity * conv_hex(num_str)
     if num_str.count(".") == 1:
         split_num_str = num_str.split('.') 
         return parity * conv_float(split_num_str[0], split_num_str[1])
