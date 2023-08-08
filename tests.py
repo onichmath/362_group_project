@@ -67,6 +67,9 @@ class TestCase(unittest.TestCase):
     def test_hex_decimal(self):
         self.assertEqual(None, conv_num("0xFF.23"))
 
+    def test_double_hyphen(self):
+        self.assertEqual(None, conv_num("-213-213"))
+
 
 
     # Testing For conv_endian

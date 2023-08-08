@@ -69,15 +69,19 @@ def conv_num_failure(num_str):
         return True
     if num_str.count("-") > 1:
         return True
+    if num_str.count("-") == 1:
+        if not num_str[0] == "-":
+            return True
+    if len(num_str) == 0:
+        return True
 
 def conv_num_sign(num_str_param):
     """Finds the sign of a number"""
     num_str = str(num_str_param)
     sign = 1
-    if num_str.count("-") == 1:
-        if num_str[0] == "-":
-            sign = -1
-            num_str = num_str[1::]
+    if num_str[0] == "-":
+        sign = -1
+        num_str = num_str[1::]
     return num_str, sign
 
 def conv_num(num_str_param):
