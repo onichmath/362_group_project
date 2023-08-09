@@ -6,7 +6,7 @@ Description: Tasks for our group project
 # Function 1
 
 
-def str_to_num(num_str):
+def str_to_num(num_str: str):
     """Takes a str representing a num and converts it to an number"""
     map = {
         "0": 0,
@@ -31,7 +31,7 @@ def str_to_num(num_str):
     return None
 
 
-def conv_int(int_str, sign):
+def conv_int(int_str: str, sign: str):
     """Converts a string representing an int to an int"""
     result = 0
     power = 0
@@ -41,7 +41,7 @@ def conv_int(int_str, sign):
     return sign * result
 
 
-def conv_float(left_num_str, right_num_str, sign):
+def conv_float(left_num_str: str, right_num_str: str, sign: str):
     """Converts a str representing a float to a float"""
     result = 0
     left_power = 0
@@ -59,7 +59,7 @@ def conv_float(left_num_str, right_num_str, sign):
     return sign * result
 
 
-def conv_hex(hex_str, sign):
+def conv_hex(hex_str: str, sign: str):
     """Converts a str representing a hex to an int"""
     result = 0
     power = 0
@@ -72,7 +72,7 @@ def conv_hex(hex_str, sign):
     return sign * result
 
 
-def conv_num_failure(num_str):
+def conv_num_failure(num_str) -> bool:
     """Failure conditions for conv_num"""
     if not isinstance(num_str, str):
         return True
@@ -85,9 +85,10 @@ def conv_num_failure(num_str):
             return True
     if len(num_str) == 0:
         return True
+    return False
 
 
-def conv_num_sign(num_str_param):
+def remove_num_sign(num_str_param: str) -> tuple:
     """Finds the sign of a number"""
     num_str = str(num_str_param)
     sign = 1
@@ -97,16 +98,36 @@ def conv_num_sign(num_str_param):
     return num_str, sign
 
 
+def is_hex(num_str: str) -> bool:
+    """Returns T/F depending on if num string is hexadecimal"""
+    if num_str.count("0x") > 0:
+        if num_str[:2] == "0x":
+            return True
+    return False
+
+
+def remove_hex_prefix(num_str_param: str) -> str:
+    """Removes the hex prefix for num_str"""
+    num_str = str(num_str_param)
+    return num_str[2::].lower()
+
+
+def is_float(num_str: str) -> bool:
+    """Returns T/F depending on if num string is a float"""
+    if num_str.count(".") == 1:
+        return True
+    return False
+
+
 def conv_num(num_str_param):
     """Takes in a str representing a num, converts it to base 10, and returns it."""
     if conv_num_failure(num_str_param):
         return None
-    num_str, sign = conv_num_sign(num_str_param)
-    if num_str.count("0x") > 0:
-        if num_str[:2] == "0x":
-            num_str = num_str[2::].lower()
-            return conv_hex(num_str, sign)
-    if num_str.count(".") == 1:
+    num_str, sign = remove_num_sign(num_str_param)
+    if is_hex(num_str):
+        num_str = remove_hex_prefix(num_str)
+        return conv_hex(num_str, sign)
+    if is_float(num_str):
         split_num_str = num_str.split('.')
         return conv_float(split_num_str[0], split_num_str[1], sign)
     if num_str.isdecimal():
