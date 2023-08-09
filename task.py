@@ -31,7 +31,7 @@ def str_to_num(num_str):
     return None
 
 
-def conv_int(int_str:str, sign:str):
+def conv_int(int_str: str, sign: str):
     """Converts a string representing an int to an int"""
     result = 0
     power = 0
@@ -41,7 +41,7 @@ def conv_int(int_str:str, sign:str):
     return sign * result
 
 
-def conv_float(left_num_str:str, right_num_str:str, sign:str):
+def conv_float(left_num_str: str, right_num_str: str, sign: str):
     """Converts a str representing a float to a float"""
     result = 0
     left_power = 0
@@ -59,7 +59,7 @@ def conv_float(left_num_str:str, right_num_str:str, sign:str):
     return sign * result
 
 
-def conv_hex(hex_str:str, sign:str):
+def conv_hex(hex_str: str, sign: str):
     """Converts a str representing a hex to an int"""
     result = 0
     power = 0
@@ -88,7 +88,7 @@ def conv_num_failure(num_str) -> bool:
     return False
 
 
-def conv_num_sign(num_str_param:str) -> tuple:
+def remove_num_sign(num_str_param: str) -> tuple:
     """Finds the sign of a number"""
     num_str = str(num_str_param)
     sign = 1
@@ -97,6 +97,7 @@ def conv_num_sign(num_str_param:str) -> tuple:
         num_str = num_str[1::]
     return num_str, sign
 
+
 def is_hex(num_str) -> bool:
     """Returns T/F depending on if num string is hexadecimal"""
     if num_str.count("0x") > 0:
@@ -104,12 +105,14 @@ def is_hex(num_str) -> bool:
             return True
     return False
 
-def remove_hex_prefix(num_str_param:str) -> str:
+
+def remove_hex_prefix(num_str_param: str) -> str:
     """Removes the hex prefix for num_str"""
     num_str = str(num_str_param)
     return num_str[2::].lower()
 
-def is_float(num_str:str) -> bool:
+
+def is_float(num_str: str) -> bool:
     """Returns T/F depending on if num string is a float"""
     if num_str.count(".") == 1:
         return True
@@ -120,7 +123,7 @@ def conv_num(num_str_param):
     """Takes in a str representing a num, converts it to base 10, and returns it."""
     if conv_num_failure(num_str_param):
         return None
-    num_str, sign = conv_num_sign(num_str_param)
+    num_str, sign = remove_num_sign(num_str_param)
     if is_hex(num_str):
         num_str = remove_hex_prefix(num_str)
         return conv_hex(num_str, sign)
