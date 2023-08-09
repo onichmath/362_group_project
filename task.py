@@ -6,7 +6,7 @@ Description: Tasks for our group project
 # Function 1
 
 
-def str_to_num(num_str):
+def str_to_num(num_str: str):
     """Takes a str representing a num and converts it to an number"""
     map = {
         "0": 0,
@@ -98,7 +98,7 @@ def remove_num_sign(num_str_param: str) -> tuple:
     return num_str, sign
 
 
-def is_hex(num_str) -> bool:
+def is_hex(num_str: str) -> bool:
     """Returns T/F depending on if num string is hexadecimal"""
     if num_str.count("0x") > 0:
         if num_str[:2] == "0x":
