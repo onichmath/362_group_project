@@ -96,16 +96,27 @@ def conv_num_sign(num_str_param):
         num_str = num_str[1::]
     return num_str, sign
 
+def is_hex(num_str) -> bool:
+    """Returns T/F depending on if num string is hexadecimal"""
+    if num_str.count("0x") > 0:
+        if num_str[:2] == "0x":
+            return True
+    return False
+
+def remove_hex_prefix(num_str_param:str) -> str:
+    """Removes the hex prefix for num_str"""
+    num_str = str(num_str_param)
+    return num_str[2::].lower()
+
 
 def conv_num(num_str_param):
     """Takes in a str representing a num, converts it to base 10, and returns it."""
     if conv_num_failure(num_str_param):
         return None
     num_str, sign = conv_num_sign(num_str_param)
-    if num_str.count("0x") > 0:
-        if num_str[:2] == "0x":
-            num_str = num_str[2::].lower()
-            return conv_hex(num_str, sign)
+    if is_hex(num_str):
+        num_str = remove_hex_prefix(num_str)
+        return conv_hex(num_str, sign)
     if num_str.count(".") == 1:
         split_num_str = num_str.split('.')
         return conv_float(split_num_str[0], split_num_str[1], sign)
