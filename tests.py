@@ -3,7 +3,8 @@ Authors: Matthew O'Malley-Nichols, Pedram Jarahzedah, Devin Fahnestock
 Description: Unit tests for our 362 group project.
 """
 import unittest
-from task import conv_endian, convert_to_hex, create_hex_array, conv_num
+from task import (conv_endian, convert_to_hex, create_hex_array, conv_num,
+                  days_in_month, days_in_year, is_leap_year, my_datetime)
 
 
 class TestCase(unittest.TestCase):
@@ -96,6 +97,45 @@ class TestCase(unittest.TestCase):
 
     def test_hex_prefix_3(self):
         self.assertEqual(None, conv_num("-0xFD0x32df"))
+
+    # Testing for my_datetime
+
+    def test_leap_1(self):
+        self.assertTrue(is_leap_year(1972))
+
+    def test_leap_2(self):
+        self.assertFalse(is_leap_year(1970))
+
+    def test_correct_days1(self):
+        self.assertEqual(days_in_year(1972), 366)
+
+    def test_correct_days2(self):
+        self.assertEqual(days_in_year(1970), 365)
+
+    def test_correct_days3(self):
+        self.assertEqual(days_in_month(1970, 2), 28)
+
+    def test_correct_days4(self):
+        self.assertEqual(days_in_month(1972, 2), 29)
+
+    def test_correct_days5(self):
+        self.assertEqual(days_in_month(1970, 1), 31)
+
+    def test_correct_days6(self):
+        self.assertEqual(days_in_month(1970, 4), 30)
+
+    # Example Tests From Module
+    def test_datetime1(self):
+        self.assertEqual(my_datetime(0), '01-01-1970')
+
+    def test_datetime2(self):
+        self.assertEqual(my_datetime(123456789), '11-29-1973')
+
+    def test_datetime3(self):
+        self.assertEqual(my_datetime(9876543210), '12-22-2282')
+
+    def test_datetime4(self):
+        self.assertEqual(my_datetime(201653971200), '02-29-8360')
 
     # Testing For conv_endian
 
