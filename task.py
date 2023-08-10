@@ -120,7 +120,8 @@ def is_float(num_str: str) -> bool:
 
 
 def conv_num(num_str_param):
-    """Takes in a str representing a num, converts it to base 10, and returns it."""
+    """Takes in a str representing a num, converts it to base 10,
+       and returns it."""
     if conv_num_failure(num_str_param):
         return None
     num_str, sign = remove_num_sign(num_str_param)

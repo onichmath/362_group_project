@@ -3,7 +3,8 @@ Authors: Matthew O'Malley-Nichols, Pedram Jarahzedah, Devin Fahnestock
 Description: Unit tests for our 362 group project.
 """
 import unittest
-from task import conv_endian, convert_to_hex, create_hex_array, conv_num, days_in_month, days_in_year, is_leap_year, my_datetime
+from task import (conv_endian, convert_to_hex, create_hex_array, conv_num,
+                  days_in_month, days_in_year, is_leap_year, my_datetime)
 
 
 class TestCase(unittest.TestCase):
