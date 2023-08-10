@@ -137,10 +137,58 @@ def conv_num(num_str_param):
 # Function 2
 
 
+def is_leap_year(year):
+    """Receives an int representing a year and returns True if year is a
+    leap year and false if not a leap year.
+    """
+    if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:
+        return True
+    return False
+
+
+def days_in_year(year):
+    """Receives an int representing the year and returns an in representing
+    the number of days in that year"""
+    if is_leap_year(year):
+        return 366
+    return 365
+
+
+def days_in_month(year, month):
+    """Receives two ints representing the year and month and returns an
+    int representing the number days in that month"""
+    if month in [1, 3, 5, 7, 8, 10, 12]:
+        return 31
+    elif month in [4, 6, 9, 11]:
+        return 30
+    elif is_leap_year(year):
+        return 29
+    return 28
+
+
 def my_datetime(num_sec):
     """Takes in an int representing the num of secs since the epoch,
       and returns it as a string formatted as MM-DD-YYYY"""
-    pass
+    year = 1970
+    day = 1
+    month = 1
+    seconds_in_day = 86400
+
+    while num_sec >= seconds_in_day:
+        days_in_current_year = days_in_year(year)
+        days_in_current_month = days_in_month(year, month)
+
+        if num_sec >= days_in_current_year * seconds_in_day:
+            num_sec -= days_in_current_year * seconds_in_day
+            year += 1
+        elif num_sec >= days_in_current_month * seconds_in_day:
+            num_sec -= days_in_current_month * seconds_in_day
+            month += 1
+        else:
+            day = 1 + num_sec // seconds_in_day
+            num_sec %= seconds_in_day
+
+    return f"{month:02d}-{day:02d}-{year}"
 
 # Function 3
 
