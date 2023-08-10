@@ -145,7 +145,8 @@ def my_datetime(num_sec):
 # Function 3
 
 
-def convert_to_hex(num):
+def convert_to_hex(num: int):
+    """This Function takes a number and converts it to a hex string value."""
     hexmap = {
         0: '0',
         1: '1',
@@ -167,7 +168,8 @@ def convert_to_hex(num):
     return hexmap[num]
 
 
-def create_hex_array(num):
+def create_hex_array(num: int):
+    """This function takes a number and returns a inverse array of each Hex values as strings."""
     hex = []
     if num == 0:
         hex.append(convert_to_hex(0))
@@ -180,7 +182,7 @@ def create_hex_array(num):
     return hex
 
 
-def conv_endian(num, endian='big'):
+def conv_endian(num: int, endian='big'):
     """Takes in an int as num and converts it to a hexadecimal num.
     The endian type is determined by the flag endian. Returns a string."""
     hexstr = ""
