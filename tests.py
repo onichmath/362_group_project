@@ -263,8 +263,8 @@ def test_random_float(amount: int = 10000):
             self.assertEqual(conv_num(str(num_float)), num_float)
         setattr(TestCase, "test_float_{}".format(test), test)
         tests_to_generate -= 1
-
-
+#
+#
 if __name__ == "__main__":
     test_random_hex(10000)
     test_random_int(10000)
