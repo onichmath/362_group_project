@@ -142,14 +142,8 @@ class TestCase(unittest.TestCase):
     def test_correct_days6(self):
         self.assertEqual(days_in_month(1970, 4), 30)
 
-    def random_test1(self):
-        tests_to_generate = 1000000
-        for i in range(tests_to_generate):
-            val = random.randint(0, 253370767608)
-            self.assertEqual(datetime.datetime.utcfromtimestamp(val),
-                             my_datetime(val))
-
     # Example Tests From Module
+
     def test_datetime1(self):
         self.assertEqual(my_datetime(0), '01-01-1970')
 
@@ -228,6 +222,13 @@ class TestCase(unittest.TestCase):
 
     def test_endian_module_7(self):
         self.assertEqual(conv_endian(num=-954786, endian='small'), None)
+
+    def test_random_test_3(self):
+        tests_to_generate = 1000000
+        for i in range(tests_to_generate):
+            val = random.randint(0, 253370767608)
+            self.assertEqual(datetime.datetime.utcfromtimestamp(val),
+                             my_datetime(val))
 
 
 if __name__ == "__main__":
