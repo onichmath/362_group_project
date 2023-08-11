@@ -231,23 +231,27 @@ class TestCase(unittest.TestCase):
     #                          my_datetime(val))
 
 
-def test_random_test_hex(amount):
+def test_random_test_hex(amount: int = 10000):
     tests_to_generate = amount
-    for i in range(tests_to_generate):
+    while tests_to_generate > 0:
         num_hex = str(hex(random.randint(-9999999, 999999)))
         num_int = int(num_hex, 0)
 
         def test(self):
             self.assertEqual(conv_num(num_hex), num_int)
         setattr(TestCase, "test_hex_{}".format(test), test)
+        tests_to_generate -= 1
 
-def test_random_test_int(amount):
-    test_to_generate = amount
-    for i in range(test_to_generate):
+
+def test_random_test_int(amount: int = 10000):
+    tests_to_generate = amount
+    while tests_to_generate > 0:
         num_int = random.randint(-999999, 999999)
+
         def test(self):
             self.assertEqual(conv_num(str(num_int)), num_int)
         setattr(TestCase, "test_int_{}".format(test), test)
+        tests_to_generate -= 1
 
 
 if __name__ == "__main__":
