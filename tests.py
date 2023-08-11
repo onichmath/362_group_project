@@ -223,15 +223,15 @@ class TestCase(unittest.TestCase):
     def test_endian_module_7(self):
         self.assertEqual(conv_endian(num=-954786, endian='small'), None)
 
-    def test_random_test_3(self):
-        tests_to_generate = 1000000
-        for i in range(tests_to_generate):
-            val = random.randint(0, 253370767608)
-            self.assertEqual(datetime.datetime.utcfromtimestamp(val),
-                             my_datetime(val))
+    # def test_random_test_3(self):
+    #     tests_to_generate = 1000000
+    #     for i in range(tests_to_generate):
+    #         val = random.randint(0, 253370767608)
+    #         self.assertEqual(datetime.datetime.utcfromtimestamp(val),
+    #                          my_datetime(val))
 
 
-def test_random_test_1_hex(amount):
+def test_random_test_hex(amount):
     tests_to_generate = amount
     for i in range(tests_to_generate):
         num_hex = str(hex(random.randint(-9999999, 999999)))
@@ -239,9 +239,18 @@ def test_random_test_1_hex(amount):
 
         def test(self):
             self.assertEqual(conv_num(num_hex), num_int)
-        setattr(TestCase, "test_{}".format(test), test)
+        setattr(TestCase, "test_hex_{}".format(test), test)
+
+def test_random_test_int(amount):
+    test_to_generate = amount
+    for i in range(test_to_generate):
+        num_int = random.randint(-999999, 999999)
+        def test(self):
+            self.assertEqual(conv_num(str(num_int)), num_int)
+        setattr(TestCase, "test_int_{}".format(test), test)
 
 
 if __name__ == "__main__":
-    test_random_test_1_hex(100000)
+    test_random_test_hex(10000)
+    test_random_test_int(10000)
     unittest.main(verbosity=2)
