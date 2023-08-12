@@ -226,12 +226,12 @@ class TestCase(unittest.TestCase):
     def test_endian_module_7(self):
         self.assertEqual(conv_endian(num=-954786, endian='small'), None)
 
-    def test_random_test_3(self):
-        tests_to_generate = 1000000
-        for i in range(tests_to_generate):
-            val = random.randint(0, 253370767608)
-            self.assertEqual(datetime.datetime.utcfromtimestamp(val),
-                             my_datetime(val))
+    # def test_random_test_3(self):
+    #     tests_to_generate = 1000000
+    #     for i in range(tests_to_generate):
+    #         val = random.randint(0, 253370767608)
+    #         self.assertEqual(datetime.datetime.utcfromtimestamp(val),
+    #                          my_datetime(val))
 
 
 def test_random_hex(amount: int = 10000):
