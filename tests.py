@@ -261,9 +261,9 @@ def test_random_float(amount: int = 10000):
         tests_to_generate -= 1
 
 
-def test_random_datetime(self, amount: int = 10000):
+def test_random_datetime(amount: int = 10000):
     tests_to_generate = amount
-    for i in range(tests_to_generate):
+    while tests_to_generate > 0:
         val = random.randint(0, 253370767608)
         d = datetime.datetime.utcfromtimestamp(val)
         date_formatted = d.strftime("%m-%d-%Y")
@@ -272,6 +272,7 @@ def test_random_datetime(self, amount: int = 10000):
             self.assertEqual(date_formatted,
                              my_datetime(val))
         setattr(TestCase, "test_datetime_{}".format(test), test)
+        tests_to_generate -= 1
 
 
 if __name__ == "__main__":
