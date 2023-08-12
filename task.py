@@ -44,9 +44,8 @@ def conv_int(int_str: str, sign: int):
 def conv_float(left_num_str: str, right_num_str: str, sign: int):
     """Converts a str representing a float to a float"""
     result = 0.0
-    left_power = 0.0
-    right_power = -1.0
-    print(right_num_str)
+    left_power = 0
+    right_power = -1
     for num in left_num_str[::-1]:
         if not num.isdecimal():
             return None
@@ -57,15 +56,10 @@ def conv_float(left_num_str: str, right_num_str: str, sign: int):
         if not num.isdecimal():
             return None
         right = str_to_num(num) * (10 ** right_power)
-        print(f"{type(right)}, {type(result)}, {type(right_power)}")
-        print(f"{right}, {result}, {right_power}")
-        # right = round(right, abs(right_power))
+        right = round(right, abs(right_power))
         result += right
-        print(f"{right}, {result}, {right_power}")
-        # result = round(result, abs(right_power))
-        # print(f"{right}, {result}, {right_power}")
-        print(f"\n\n")
-        right_power -= 1.0
+        result = round(result, abs(right_power))
+        right_power -= 1
     return sign * result
 
 

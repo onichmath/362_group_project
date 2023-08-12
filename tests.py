@@ -231,29 +231,29 @@ class TestCase(unittest.TestCase):
     #                          my_datetime(val))
 
 
-# def test_random_hex(amount: int = 10000):
-#     tests_to_generate = amount
-#     while tests_to_generate > 0:
-#         num_hex = str(hex(random.randint(-9999999, 999999)))
-#         num_int = int(num_hex, 0)
-#
-#         def test(self):
-#             self.assertEqual(conv_num(num_hex), num_int)
-#         setattr(TestCase, "test_hex_{}".format(test), test)
-#         tests_to_generate -= 1
-#
-#
-# def test_random_int(amount: int = 10000):
-#     tests_to_generate = amount
-#     while tests_to_generate > 0:
-#         num_int = random.randint(-999999, 999999)
-#
-#         def test(self):
-#             self.assertEqual(conv_num(str(num_int)), num_int)
-#         setattr(TestCase, "test_int_{}".format(test), test)
-#         tests_to_generate -= 1
-#
-#
+def test_random_hex(amount: int = 10000):
+    tests_to_generate = amount
+    while tests_to_generate > 0:
+        num_hex = str(hex(random.randint(-9999999, 999999)))
+        num_int = int(num_hex, 0)
+
+        def test(self):
+            self.assertEqual(conv_num(num_hex), num_int)
+        setattr(TestCase, "test_hex_{}".format(test), test)
+        tests_to_generate -= 1
+
+
+def test_random_int(amount: int = 10000):
+    tests_to_generate = amount
+    while tests_to_generate > 0:
+        num_int = random.randint(-999999, 999999)
+
+        def test(self):
+            self.assertEqual(conv_num(str(num_int)), num_int)
+        setattr(TestCase, "test_int_{}".format(test), test)
+        tests_to_generate -= 1
+
+
 def test_random_float(amount: int = 10000):
     tests_to_generate = amount
     while tests_to_generate > 0:
@@ -266,7 +266,7 @@ def test_random_float(amount: int = 10000):
 
 
 if __name__ == "__main__":
-    # test_random_hex(10000)
-    # test_random_int(10000)
+    test_random_hex(10000)
+    test_random_int(10000)
     test_random_float(10000)
     unittest.main(verbosity=2)
