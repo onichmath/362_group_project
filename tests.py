@@ -6,7 +6,8 @@ import unittest
 import random
 import datetime
 from task import (conv_endian, convert_to_hex, create_hex_array, conv_num,
-                  days_in_month, days_in_year, is_leap_year, my_datetime)
+                  days_in_month, days_in_year, is_leap_year, my_datetime,
+                  conv_num_failure)
 
 
 class TestCase(unittest.TestCase):
@@ -99,6 +100,21 @@ class TestCase(unittest.TestCase):
 
     def test_hex_prefix_3(self):
         self.assertEqual(None, conv_num("-0xFD0x32df"))
+
+    def test_conv_num_failure_1(self):
+        self.assertTrue(conv_num_failure(123))
+
+    def test_conv_num_failure_2(self):
+        self.assertTrue(conv_num_failure(12.3))
+
+    def test_conv_num_failure_3(self):
+        self.assertTrue(conv_num_failure("12-3"))
+
+    def test_conv_num_failure_4(self):
+        self.assertTrue(conv_num_failure("12-3-4"))
+
+    def test_conv_num_failure_5(self):
+        self.assertTrue(conv_num_failure(""))
 
     # Testing for my_datetime
 

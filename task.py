@@ -31,7 +31,7 @@ def str_to_num(num_str: str):
     return None
 
 
-def conv_int(int_str: str, sign: str):
+def conv_int(int_str: str, sign: int):
     """Converts a string representing an int to an int"""
     result = 0
     power = 0
@@ -41,7 +41,7 @@ def conv_int(int_str: str, sign: str):
     return sign * result
 
 
-def conv_float(left_num_str: str, right_num_str: str, sign: str):
+def conv_float(left_num_str: str, right_num_str: str, sign: int):
     """Converts a str representing a float to a float"""
     result = 0
     left_power = 0
@@ -59,7 +59,7 @@ def conv_float(left_num_str: str, right_num_str: str, sign: str):
     return sign * result
 
 
-def conv_hex(hex_str: str, sign: str):
+def conv_hex(hex_str: str, sign: int):
     """Converts a str representing a hex to an int"""
     result = 0
     power = 0
@@ -101,8 +101,7 @@ def remove_num_sign(num_str_param: str) -> tuple:
 def is_hex(num_str: str) -> bool:
     """Returns T/F depending on if num string is hexadecimal"""
     if num_str.count("0x") > 0:
-        if num_str[:2] == "0x":
-            return True
+        return num_str[:2] == "0x"
     return False
 
 
@@ -114,9 +113,7 @@ def remove_hex_prefix(num_str_param: str) -> str:
 
 def is_float(num_str: str) -> bool:
     """Returns T/F depending on if num string is a float"""
-    if num_str.count(".") == 1:
-        return True
-    return False
+    return num_str.count(".") == 1
 
 
 def conv_num(num_str_param):
