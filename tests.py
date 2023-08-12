@@ -4,6 +4,7 @@ Description: Unit tests for our 362 group project.
 """
 import unittest
 import random
+import datetime
 from task import (conv_endian, convert_to_hex, create_hex_array, conv_num,
                   days_in_month, days_in_year, is_leap_year, my_datetime,
                   conv_num_failure)
@@ -260,8 +261,22 @@ def test_random_float(amount: int = 10000):
         tests_to_generate -= 1
 
 
+def test_random_datetime(self, amount: int = 10000):
+    tests_to_generate = amount
+    for i in range(tests_to_generate):
+        val = random.randint(0, 253370767608)
+        d = datetime.datetime.utcfromtimestamp(val)
+        date_formatted = d.strftime("%m-%d-%Y")
+
+        def test(self):
+            self.assertEqual(date_formatted,
+                             my_datetime(val))
+        setattr(TestCase, "test_datetime_{}".format(test), test)
+
+
 if __name__ == "__main__":
     test_random_hex(10000)
     test_random_int(10000)
     test_random_float(10000)
+    test_random_datetime(10000)
     unittest.main(verbosity=2)
