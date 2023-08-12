@@ -118,7 +118,7 @@ class TestCase(unittest.TestCase):
 
     def test_conv_hex_upper(self):
         self.assertEqual(int(15870796), conv_num("0XF22B4C"))
-
+        
     # Testing for my_datetime
 
     def test_leap_1(self):
