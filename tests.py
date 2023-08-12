@@ -4,7 +4,6 @@ Description: Unit tests for our 362 group project.
 """
 import unittest
 import random
-import datetime
 from task import (conv_endian, convert_to_hex, create_hex_array, conv_num,
                   days_in_month, days_in_year, is_leap_year, my_datetime,
                   conv_num_failure)
@@ -225,13 +224,6 @@ class TestCase(unittest.TestCase):
 
     def test_endian_module_7(self):
         self.assertEqual(conv_endian(num=-954786, endian='small'), None)
-
-    # def test_random_test_3(self):
-    #     tests_to_generate = 1000000
-    #     for i in range(tests_to_generate):
-    #         val = random.randint(0, 253370767608)
-    #         self.assertEqual(datetime.datetime.utcfromtimestamp(val),
-    #                          my_datetime(val))
 
 
 def test_random_hex(amount: int = 10000):
