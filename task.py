@@ -50,7 +50,7 @@ def conv_float(left_num_str: str, right_num_str: str, sign: int):
         if not num.isdecimal():
             return None
         left = str_to_num(num) * (10 ** left_power)
-        result += left 
+        result += left
         left_power += 1
     for num in right_num_str:
         if not num.isdecimal():

@@ -116,6 +116,9 @@ class TestCase(unittest.TestCase):
     def test_conv_num_failure_5(self):
         self.assertTrue(conv_num_failure(""))
 
+    def test_conv_hex_upper(self):
+        self.assertEqual(int(15870796), conv_num("0XF22B4C"))
+
     # Testing for my_datetime
 
     def test_leap_1(self):
@@ -223,12 +226,12 @@ class TestCase(unittest.TestCase):
     def test_endian_module_7(self):
         self.assertEqual(conv_endian(num=-954786, endian='small'), None)
 
-    # def test_random_test_3(self):
-    #     tests_to_generate = 1000000
-    #     for i in range(tests_to_generate):
-    #         val = random.randint(0, 253370767608)
-    #         self.assertEqual(datetime.datetime.utcfromtimestamp(val),
-    #                          my_datetime(val))
+    def test_random_test_3(self):
+        tests_to_generate = 1000000
+        for i in range(tests_to_generate):
+            val = random.randint(0, 253370767608)
+            self.assertEqual(datetime.datetime.utcfromtimestamp(val),
+                             my_datetime(val))
 
 
 def test_random_hex(amount: int = 10000):
