@@ -43,9 +43,9 @@ def conv_int(int_str: str, sign: int):
 
 def conv_float(left_num_str: str, right_num_str: str, sign: int):
     """Converts a str representing a float to a float"""
-    result = 0
-    left_power = 0
-    right_power = -1
+    result = 0.0
+    left_power = 0.0
+    right_power = -1.0
     print(right_num_str)
     for num in left_num_str[::-1]:
         if not num.isdecimal():
@@ -57,9 +57,15 @@ def conv_float(left_num_str: str, right_num_str: str, sign: int):
         if not num.isdecimal():
             return None
         right = str_to_num(num) * (10 ** right_power)
+        print(f"{type(right)}, {type(result)}, {type(right_power)}")
+        print(f"{right}, {result}, {right_power}")
+        # right = round(right, abs(right_power))
         result += right
-        result = round(result, abs(right_power))
-        right_power -= 1
+        print(f"{right}, {result}, {right_power}")
+        # result = round(result, abs(right_power))
+        # print(f"{right}, {result}, {right_power}")
+        print(f"\n\n")
+        right_power -= 1.0
     return sign * result
 
 
@@ -94,7 +100,7 @@ def conv_num_failure(num_str) -> bool:
 
 def remove_num_sign(num_str_param: str) -> tuple:
     """Finds the sign of a number"""
-    num_str = str(num_str_param)
+    num_str = str(num_str_param).lower()
     sign = 1
     if num_str[0] == "-":
         sign = -1
@@ -112,7 +118,7 @@ def is_hex(num_str: str) -> bool:
 def remove_hex_prefix(num_str_param: str) -> str:
     """Removes the hex prefix for num_str"""
     num_str = str(num_str_param)
-    return num_str[2::].lower()
+    return num_str[2::]
 
 
 def is_float(num_str: str) -> bool:
