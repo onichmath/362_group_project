@@ -276,8 +276,4 @@ def test_random_datetime(amount: int = 10000):
 
 
 if __name__ == "__main__":
-    test_random_hex(10000)
-    test_random_int(10000)
-    test_random_float(10000)
-    test_random_datetime(10000)
     unittest.main(verbosity=2)
