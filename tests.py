@@ -149,9 +149,11 @@ def test_random1(self):
         val = random.randint(0, 253370767608)
         result_str = my_datetime(val)
         result_dt = datetime.datetime.strptime(result_str, "%m-%d-%Y")
-        self.assertEqual(result_dt.year, datetime.datetime.utcfromtimestamp(val).year)
-        self.assertEqual(result_dt.month, datetime.datetime.utcfromtimestamp(val).month)
-        self.assertEqual(result_dt.day, datetime.datetime.utcfromtimestamp(val).day)
+        utc_from_timestamp = datetime.datetime.utcfromtimestamp(val)
+
+        self.assertEqual(result_dt.year, utc_from_timestamp.year)
+        self.assertEqual(result_dt.month, utc_from_timestamp.month)
+        self.assertEqual(result_dt.day, utc_from_timestamp.day)
 
     # Example Tests From Module
 
