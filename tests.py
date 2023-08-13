@@ -116,6 +116,9 @@ class TestCase(unittest.TestCase):
     def test_conv_num_failure_5(self):
         self.assertTrue(conv_num_failure(""))
 
+    def test_conv_hex_upper(self):
+        self.assertEqual(int(15870796), conv_num("0XF22B4C"))
+
     # Testing for my_datetime
 
     def test_leap_1(self):
@@ -142,14 +145,8 @@ class TestCase(unittest.TestCase):
     def test_correct_days6(self):
         self.assertEqual(days_in_month(1970, 4), 30)
 
-    def random_test1(self):
-        tests_to_generate = 1000000
-        for i in range(tests_to_generate):
-            val = random.randint(0, 253370767608)
-            self.assertEqual(datetime.datetime.utcfromtimestamp(val),
-                             my_datetime(val))
-
     # Example Tests From Module
+
     def test_datetime1(self):
         self.assertEqual(my_datetime(0), '01-01-1970')
 
@@ -230,5 +227,57 @@ class TestCase(unittest.TestCase):
         self.assertEqual(conv_endian(num=-954786, endian='small'), None)
 
 
+def test_random_hex(amount: int = 10000):
+    tests_to_generate = amount
+    while tests_to_generate > 0:
+        num_hex = str(hex(random.randint(-9999999, 999999)))
+        num_int = int(num_hex, 0)
+
+        def test(self):
+            self.assertEqual(conv_num(num_hex), num_int)
+        setattr(TestCase, "test_hex_{}".format(test), test)
+        tests_to_generate -= 1
+
+
+def test_random_int(amount: int = 10000):
+    tests_to_generate = amount
+    while tests_to_generate > 0:
+        num_int = random.randint(-999999, 999999)
+
+        def test(self):
+            self.assertEqual(conv_num(str(num_int)), num_int)
+        setattr(TestCase, "test_int_{}".format(test), test)
+        tests_to_generate -= 1
+
+
+def test_random_float(amount: int = 10000):
+    tests_to_generate = amount
+    while tests_to_generate > 0:
+        num_float = random.uniform(-999999, 999999)
+
+        def test(self):
+            self.assertEqual(conv_num(str(num_float)), num_float)
+        setattr(TestCase, "test_float_{}".format(test), test)
+        tests_to_generate -= 1
+
+
+def test_random_datetime(amount: int = 10000):
+    tests_to_generate = amount
+    while tests_to_generate > 0:
+        val = random.randint(0, 253370767608)
+        d = datetime.datetime.utcfromtimestamp(val)
+        date_formatted = d.strftime("%m-%d-%Y")
+
+        def test(self):
+            self.assertEqual(date_formatted,
+                             my_datetime(val))
+        setattr(TestCase, "test_datetime_{}".format(test), test)
+        tests_to_generate -= 1
+
+
 if __name__ == "__main__":
-    unittest.main()
+    test_random_hex(10000)
+    test_random_int(10000)
+    test_random_float(10000)
+    test_random_datetime(10000)
+    unittest.main(verbosity=2)
