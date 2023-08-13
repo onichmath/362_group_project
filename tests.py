@@ -142,18 +142,20 @@ class TestCase(unittest.TestCase):
     def test_correct_days6(self):
         self.assertEqual(days_in_month(1970, 4), 30)
 
+    def assert_date_equal(self, date1, date2):
+        self.assertEqual(date1.year, date2.year)
+        self.assertEqual(date1.month, date2.month)
+        self.assertEqual(date1.day, date2.day)
 
-def test_random1(self):
-    tests_to_generate = 1000
-    for i in range(tests_to_generate):
-        val = random.randint(0, 253370767608)
-        result_str = my_datetime(val)
-        result_dt = datetime.datetime.strptime(result_str, "%m-%d-%Y")
-        utc_from_timestamp = datetime.datetime.utcfromtimestamp(val)
-
-        self.assertEqual(result_dt.year, utc_from_timestamp.year)
-        self.assertEqual(result_dt.month, utc_from_timestamp.month)
-        self.assertEqual(result_dt.day, utc_from_timestamp.day)
+    def test_random1(self):
+        tests_to_generate = 1000
+        max_timestamp = 253370767608
+        for i in range(tests_to_generate):
+            val = random.randint(0, max_timestamp)
+            result_str = my_datetime(val)
+            result_dt = datetime.datetime.strptime(result_str, "%m-%d-%Y")
+            utc_from_timestamp = datetime.datetime.utcfromtimestamp(val)
+            self.assert_date_equal(result_dt, utc_from_timestamp)
 
     # Example Tests From Module
 
